@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>impmja - Game Developer</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #2d1b3d, #4a2c5e);
+            color: #e6e6e6;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 40px;
+            min-height: 100vh;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        h1 {
+            color: #e68faf;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .subtitle {
+            color: #d0d0d0;
+            font-size: 1.1em;
+            margin-bottom: 0;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .project-card {
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+            border: 1px solid rgba(230, 143, 175, 0.2);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            background: rgba(230, 143, 175, 0.1);
+            border-color: rgba(230, 143, 175, 0.4);
+        }
+        
+        .project-title {
+            color: #e68faf;
+            font-size: 1.4em;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .project-description {
+            color: #d0d0d0;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .project-link {
+            display: inline-block;
+            background: #e68faf;
+            color: #2d1b3d;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        
+        .project-link:hover {
+            background: #f2a8c4;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>impmja - Game Developer</h1>
+        <p class="subtitle">Independent game development and web projects</p>
+    </div>
+    
+    <div class="projects-grid">
+        <div class="project-card">
+            <div class="project-title">Game Projects</div>
+            <div class="project-description">
+                Horror games, interactive fiction, and experimental gameplay experiences.
+            </div>
+            <a href="https://impmja.itch.io/" class="project-link">View on itch.io</a>
+        </div>
+        
+        <div class="project-card">
+            <div class="project-title">Web Development</div>
+            <div class="project-description">
+                Professional web development services and technical projects.
+            </div>
+            <a href="https://9to5grind.dev/" class="project-link">Visit 9to5grind.dev</a>
+        </div>
+    </div>
+</body>
+</html>
