@@ -51,7 +51,7 @@
             border-radius: 10px;
             padding: 25px;
             text-align: center;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.1s ease;
             border: 1px solid rgba(230, 143, 175, 0.2);
             position: relative;
             box-shadow: 
@@ -130,32 +130,34 @@
     <script>
         document.addEventListener('mousemove', (e) => {
             const cards = document.querySelectorAll('.project-card');
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-            
             const mouseX = e.clientX;
             const mouseY = e.clientY;
             
-            const offsetX = (mouseX - centerX) / centerX;
-            const offsetY = (mouseY - centerY) / centerY;
-            
-            cards.forEach((card, index) => {
-                // Reduzierte Schatten-Bewegung
-                const shadowX = 5 + (offsetX * 3);
-                const shadowY = 8 + (offsetY * 3);
+            cards.forEach((card) => {
+                const rect = card.getBoundingClientRect();
+                const cardCenterX = rect.left + rect.width / 2;
+                const cardCenterY = rect.top + rect.height / 2;
                 
-                // Minimal 3D-Rotation
-                const rotateX = offsetY * 0.5;
-                const rotateY = offsetX * -0.5;
+                // Berechne Abstand von Card-Mitte zum Cursor
+                const deltaX = mouseX - cardCenterX;
+                const deltaY = mouseY - cardCenterY;
                 
-                card.style.boxShadow = `
-                    ${shadowX}px ${shadowY}px 25px rgba(0,0,0,0.3),
-                    ${shadowX * 0.5}px ${shadowY * 0.5}px 10px rgba(0,0,0,0.2)
-                `;
+                // Normalisiere basierend auf Card-Größe
+                const rotateY = (deltaX / rect.width) * 15; // Max 15° links/rechts
+                const rotateX = -(deltaY / rect.height) * 15; // Max 15° hoch/runter (negativ für intuitive Richtung)
+                
+                // Sanfte Schatten-Bewegung
+                const shadowX = 5 + (deltaX / rect.width) * 5;
+                const shadowY = 8 + (deltaY / rect.height) * 5;
                 
                 card.style.transform = `
                     rotateX(${rotateX}deg) 
                     rotateY(${rotateY}deg)
+                `;
+                
+                card.style.boxShadow = `
+                    ${shadowX}px ${shadowY}px 25px rgba(0,0,0,0.3),
+                    ${shadowX * 0.5}px ${shadowY * 0.5}px 10px rgba(0,0,0,0.2)
                 `;
             });
         });
