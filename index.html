@@ -51,7 +51,7 @@
             border-radius: 10px;
             padding: 25px;
             text-align: center;
-            transition: background 0.3s ease, transform 0.1s ease;
+            transition: background 0.3s ease, transform 0.2s ease;
             border: 1px solid rgba(230, 143, 175, 0.2);
             position: relative;
             box-shadow: 
@@ -138,17 +138,14 @@
                 const cardCenterX = rect.left + rect.width / 2;
                 const cardCenterY = rect.top + rect.height / 2;
                 
-                // Berechne Abstand von Card-Mitte zum Cursor
                 const deltaX = mouseX - cardCenterX;
                 const deltaY = mouseY - cardCenterY;
                 
-                // Normalisiere basierend auf Card-Größe
-                const rotateY = (deltaX / rect.width) * 15; // Max 15° links/rechts
-                const rotateX = -(deltaY / rect.height) * 15; // Max 15° hoch/runter (negativ für intuitive Richtung)
+                const rotateY = (deltaX / rect.width) * 2;
+                const rotateX = -(deltaY / rect.height) * 2;
                 
-                // Sanfte Schatten-Bewegung
-                const shadowX = 5 + (deltaX / rect.width) * 5;
-                const shadowY = 8 + (deltaY / rect.height) * 5;
+                const shadowX = 5 + (deltaX / rect.width) * 2;
+                const shadowY = 8 + (deltaY / rect.height) * 2;
                 
                 card.style.transform = `
                     rotateX(${rotateX}deg) 
